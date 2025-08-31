@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blockchain Demo - Visualizer & Explorer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <img src="assets/logo.svg" alt="BlockDemo Logo" />
+      <span>BlockDemo</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Visualizer</a></li>
+      <li><a href="explorer.html">Explorer</a></li>
+      <li><a href="info.html">Learn</a></li>
+      <li><a href="#" id="faq-link">FAQ</a></li>
+    </ul>
+  </nav>
+
+  <header class="header-section">
+    <h1>Interactive Blockchain Visualizer</h1>
+    <p>Build, mine, and explore your own blockchain blocks with transactions and validation.</p>
+  </header>
+
+  <main class="main-container">
+    <section class="blockchain-visualizer">
+      <div id="blockchain" class="blockchain">
+        <!-- Blocks Render Here -->
+      </div>
+
+      <div class="controls">
+        <h3>Add a new Block</h3>
+        <textarea id="block-transactions" placeholder="Enter transactions JSON (array of {sender, recipient, amount})"></textarea>
+        <div class="difficulty-control">
+          <label for="miningDifficulty">Mining Difficulty (leading zeros): </label>
+          <input type="number" id="miningDifficulty" min="1" max="5" value="2" />
+        </div>
+        <button id="mineBlockBtn">Mine & Add Block</button>
+      </div>
+
+      <div class="validation-controls">
+        <button id="validateChainBtn">Validate Blockchain Integrity</button>
+        <div id="validationResult" class="validation-result"></div>
+      </div>
+    </section>
+
+    <section class="network-visualization">
+      <h3>Simulated Network Nodes</h3>
+      <div id="networkNodes" class="network-nodes"></div>
+      <button id="syncNetworkBtn" class="sync-btn">Sync Network Chains</button>
+    </section>
+  </main>
+
+  <!-- Modal FAQ -->
+  <div class="modal fade" id="faqModal" aria-hidden="true" aria-modal="true" role="dialog">
+    <div class="modal-content">
+      <h2>Blockchain FAQ</h2>
+      <button id="closeFaq" class="modal-close" aria-label="Close FAQ">&times;</button>
+      <div class="faq-list">
+        <details>
+          <summary>What is Blockchain?</summary>
+          <p>Blockchain is a decentralized digital ledger where data blocks are linked using cryptography and are immutable.</p>
+        </details>
+        <details>
+          <summary>What is Proof of Work?</summary>
+          <p>Proof of Work is a consensus mechanism requiring miners to solve a computational challenge to add a block securely.</p>
+        </details>
+        <details>
+          <summary>What is a block's hash?</summary>
+          <p>A hash is a unique cryptographic fingerprint for each block; it identifies data and links blocks.</p>
+        </details>
+        <details>
+          <summary>What happens if a block is tampered?</summary>
+          <p>The hash changes, breaking links to subsequent blocks—thus the chain becomes invalid.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

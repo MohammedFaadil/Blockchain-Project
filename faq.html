@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blockchain FAQ</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    main {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 0 1rem;
+      background: #21364d;
+      border-radius: 14px;
+      box-shadow: 0 8px 30px rgba(3,169,244,0.5);
+    }
+    h1 {
+      color: #03a9f4;
+      font-weight: 900;
+      text-align: center;
+      padding-bottom: 1.5rem;
+    }
+    details {
+      background: #1a2a4f;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      padding: 1rem 1.3rem;
+      cursor: pointer;
+      box-shadow: 0 0 12px #03a9f433;
+      transition: box-shadow 0.3s ease;
+      user-select: none;
+    }
+    details[open] {
+      box-shadow: 0 0 22px #03a9f4cc;
+    }
+    summary {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #80cbff;
+      list-style: none;
+      outline: none;
+    }
+    summary::-webkit-details-marker {
+      display: none;
+    }
+    p {
+      padding-top: 0.6rem;
+      color: #b0d3ffcc;
+      font-size: 1rem;
+      line-height: 1.4;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <img src="assets/logo.svg" alt="BlockDemo Logo" />
+      <span>BlockDemo</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Visualizer</a></li>
+      <li><a href="explorer.html">Explorer</a></li>
+      <li><a href="info.html">Learn</a></li>
+      <li><a href="faq.html" class="active">FAQ</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <h1>Frequently Asked Questions</h1>
+
+    <details>
+      <summary>What is Blockchain?</summary>
+      <p>A blockchain is a decentralized digital ledger that securely records transactions in linked blocks, ensuring tamper-proof data.</p>
+    </details>
+
+    <details>
+      <summary>How does Proof of Work secure the blockchain?</summary>
+      <p>Proof of Work requires miners to solve a difficult cryptographic puzzle, making it expensive to alter blocks and ensuring network security.</p>
+    </details>
+
+    <details>
+      <summary>What are Transactions in Blockchain?</summary>
+      <p>Transactions are records of asset transfer between accounts, included inside blocks to update ownership or states.</p>
+    </details>
+
+    <details>
+      <summary>What happens if someone tries to change a block?</summary>
+      <p>Changing a block changes its hash, breaking the chain’s integrity and invalidating subsequent blocks, making tampering evident.</p>
+    </details>
+
+    <details>
+      <summary>Can blockchain be centralized?</summary>
+      <p>Technically yes, but one major benefit is decentralization where no single party controls the ledger, increasing transparency & security.</p>
+    </details>
+
+    <details>
+      <summary>What is a Node in blockchain?</summary>
+      <p>A node is a participant computer that maintains a copy of the blockchain and helps validate transactions and blocks.</p>
+    </details>
+  </main>
+
+  <footer style="text-align:center; padding:1rem; background:#172138; color:#ccc;">
+    <small>© 2025 BlockDemo Blockchain Edu FAQ</small>
+  </footer>
+</body>
+</html>

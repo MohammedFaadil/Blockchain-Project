@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blockchain Explorer</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .search-section {
+      max-width: 800px;
+      margin: 2rem auto;
+      background: #21364d;
+      padding: 1.5rem 2rem;
+      border-radius: 14px;
+      box-shadow: 0 8px 30px rgba(3,169,244,0.5);
+    }
+
+    input[type=text] {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      border-radius: 8px;
+      border: 2px solid #03a9f4;
+      background: transparent;
+      color: #d0e8ff;
+      font-family: monospace;
+      font-size: 1rem;
+      outline: none;
+      transition: box-shadow 0.3s ease;
+    }
+
+    input[type=text]:focus {
+      box-shadow: 0 0 15px #03a9f4aa;
+      border-color: #03a9f4;
+    }
+
+    button.search-btn {
+      margin-top: 1rem;
+      padding: 0.7rem 1.8rem;
+      background: #03a9f4;
+      border: none;
+      border-radius: 12px;
+      font-weight: 700;
+      color: #0a202f;
+      font-size: 1.1rem;
+      cursor: pointer;
+      box-shadow: 0 6px 18px #03a9f433;
+      transition: background-color 0.3s ease;
+    }
+
+    button.search-btn:hover {
+      background: #0286d3;
+      box-shadow: 0 10px 30px #03a9f4cc;
+    }
+
+    .results-container {
+      max-width: 800px;
+      margin: 2rem auto;
+      background: #1a2a4f;
+      border-radius: 14px;
+      box-shadow: 0 8px 40px #03a9f4aa;
+      padding: 1.5rem 1.8rem;
+      color: #bcd5ff;
+      font-family: monospace;
+      white-space: pre-wrap;
+      user-select: text;
+      max-height: 450px;
+      overflow-y: auto;
+    }
+
+    .result-highlight {
+      background-color: #03a9f480;
+      border-left: 6px solid #03a9f4;
+      padding-left: 8px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <img src="assets/logo.svg" alt="BlockDemo Logo" />
+      <span>BlockDemo</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Visualizer</a></li>
+      <li><a href="explorer.html" class="active">Explorer</a></li>
+      <li><a href="info.html">Learn</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section class="search-section">
+      <h1>Search Blockchain</h1>
+      <input id="searchInput" type="text" placeholder="Search by block index, hash, or transaction sender/recipient..." />
+      <button id="searchBtn" class="search-btn">Search</button>
+    </section>
+
+    <section class="results-container" id="results">
+      <em>No search performed yet.</em>
+    </section>
+  </main>
+
+  <footer style="text-align:center; padding:1rem; background:#172138; color:#ccc;">
+    <small>© 2025 BlockDemo Blockchain Explorer</small>
+  </footer>
+
+  <script>
+    // Placeholder to simulate blockchain data for demo (could be imported from app.js)
+    let demoChain = [];
+
+    // Utility function to highlight matched search terms in output
+    function highlight(text, term) {
+      if (!term) return text;
+      const re = new RegExp(`(${term.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})`, 'gi');
+      return text.replace(re, '<span class="result-highlight">$1</span>');
+    }
+
+    async function loadDemoChain() {
+      // Simulated async loading if real blockchain not connected
+      return new Promise(resolve => {
+        setTimeout(() => {
+          // Simplified demo blocks (index, hash, transactions)
+          demoChain = [
+            {
+              index: 0,
+              hash: '000a1b2c3d4e5f',
+              previousHash: '0',
+              timestamp: new Date().toISOString(),
+              transactions: [
+                { sender: 'network', recipient: 'genesis', amount: 0 }
+              ],
+            },
+            {
+              index: 1,
+              hash: '000b2c3d4e5f6g',
+              previousHash: '000a1b2c3d4e5f',
+              timestamp: new Date().toISOString(),
+              transactions: [
+                { sender: 'alice', recipient: 'bob', amount: 10 }
+              ],
+            },
+            {
+              index: 2,
+              hash: '000c3d4e5f6g7h',
+              previousHash: '000b2c3d4e5f6g',
+              timestamp: new Date().toISOString(),
+              transactions: [
+                { sender: 'bob', recipient: 'carol', amount: 5 }
+              ],
+            },
+          ];
+          resolve();
+        }, 200);
+      });
+    }
+
+    function renderBlock(block, searchTerm) {
+      let blockStr = `Block #${block.index}\nTimestamp: ${new Date(block.timestamp).toLocaleString()}\nPrevious Hash: ${block.previousHash}\nHash: ${block.hash}\nTransactions:\n`;
+      for(const tx of block.transactions) {
+        blockStr += `  - ${tx.sender} -> ${tx.recipient}: ${tx.amount}\n`;
+      }
+      return highlight(blockStr, searchTerm);
+    }
+
+    async function searchBlockchain(term) {
+      if (!term) {
+        document.getElementById('results').innerHTML = '<em>Please enter a search term.</em>';
+        return;
+      }
+      await loadDemoChain();
+      const results = demoChain.filter(block => {
+        if (block.index.toString() === term) return true;
+        if (block.hash.includes(term)) return true;
+        if (block.previousHash.includes(term)) return true;
+        for (const tx of block.transactions) {
+          if (tx.sender.includes(term) || tx.recipient.includes(term)) return true;
+          if (tx.amount.toString() === term) return true;
+        }
+        return false;
+      });
+
+      const resultsContainer = document.getElementById('results');
+      if (results.length === 0) {
+        resultsContainer.innerHTML = `<em>No results found for "<strong>${term}</strong>"</em>`;
+      } else {
+        resultsContainer.innerHTML = results.map(b => `<pre>${renderBlock(b, term)}</pre>`).join('');
+      }
+    }
+
+    document.getElementById('searchBtn').addEventListener('click', () => {
+      const term = document.getElementById('searchInput').value.trim();
+      searchBlockchain(term);
+    });
+
+    document.getElementById('searchInput').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        document.getElementById('searchBtn').click();
+      }
+    });
+  </script>
+</body>
+</html>

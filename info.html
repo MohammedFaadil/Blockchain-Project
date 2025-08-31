@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Informative: Blockchain Technology</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .info-wrap {
+      max-width: 900px;
+      margin: 3em auto 3em auto;
+      background: rgba(18,54,77,0.88);
+      padding: 2.8em 2em;
+      border-radius: 18px;
+      box-shadow: 0 12px 38px rgba(18,54,77,0.18);
+    }
+    .info-wrap h2 {
+      color: #03A9F4;
+      font-size: 2em;
+      margin-bottom: 1em;
+      letter-spacing: 1px;
+    }
+    .info-wrap h3 {
+      color: #39de84;
+      margin-top: 2em;
+      font-size: 1.4em;
+      letter-spacing: 0.5px;
+    }
+    .info-wrap p, .info-wrap ul {
+      font-size: 1.08em;
+      color: #b3d2f1;
+      margin: 0.6em 0 1em 0;
+    }
+    .info-wrap ul {
+      margin-left: 1.5em;
+    }
+    .info-wrap code {
+      color: #5fd3fa;
+      background: #1c2632;
+      padding: 0.18em 0.4em;
+      border-radius: 6px;
+    }
+    .info-cta {
+      margin: 2.7em 0 0 0;
+      text-align: center;
+    }
+    .info-cta a {
+      display: inline-block;
+      padding: 0.7em 1.7em;
+      background: #03A9F4;
+      border-radius: 8px;
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.12em;
+      font-weight: 600;
+      box-shadow: 0 4px 20px rgba(3,169,244,0.24);
+      transition: background 0.2s;
+    }
+    .info-cta a:hover {
+      background: linear-gradient(70deg, #1c92d2 0%, #03A9F4 80%);
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">BlockDemo</div>
+    <ul>
+      <li><a href="index.html">Visualizer</a></li>
+      <li><a href="info.html">Learn Blockchain</a></li>
+    </ul>
+  </nav>
+  <section class="info-wrap">
+    <h2>What is Blockchain Technology?</h2>
+    <p>
+      <strong>Blockchain</strong> is a distributed, decentralized digital ledger where records ("blocks") are linked together securely and immutably. Data once written to the blockchain cannot be altered without consensus across all nodes, making it tamper-proof. This technology powers secure peer-to-peer transactions, cryptocurrencies, and smart contracts.[web:2][web:3]
+    </p>
+    <h3>Core Features</h3>
+    <ul>
+      <li>Decentralization: No central authority controls the data; every participant validates transactions.[web:2]</li>
+      <li>Immutability: Data recorded in blocks cannot be changed retroactively.[web:3]</li>
+      <li>Transparency: Every transaction is publicly visible to the blockchain network.</li>
+      <li>Consensus: Network nodes agree on the validity of transactions (Proof of Work, Proof of Stake, etc.).[web:5]</li>
+      <li>Security: Uses cryptographic hash functions (e.g., SHA-256) to secure data.[web:2]</li>
+    </ul>
+    <h3>Essential Blockchain Components</h3>
+    <ul>
+      <li>Block: Contains data, timestamp, previous block’s hash, current block’s hash</li>
+      <li>Chain: Sequence of blocks, each linked by hashes</li>
+      <li>Hashing: Cryptographic fingerprint for block integrity</li>
+      <li>Consensus Algorithm: Ensures all nodes agree about the blockchain’s state</li>
+      <li>Nodes: Computers participating in the blockchain network</li>
+      <li>Smart Contracts: Self-executing logic stored on blockchain (not in this simple demo)</li>
+    </ul>
+    <h3>How does Blockchain Work?</h3>
+    <p>
+      Every transaction is verified, bundled in a block, and cryptographically hashed. Each block references the previous block’s hash, creating a secure chain, resistant to tampering. Only valid blocks are added after consensus among network nodes.[web:5]
+    </p>
+    <h3>Implementing a Simple Blockchain (like this website)</h3>
+    <ul>
+      <li>Each new block contains user data, current timestamp, previous block’s hash and its computed hash</li>
+      <li>Blocks are displayed visually, showing the linking structure and the cryptographic hashes</li>
+      <li>Code uses SHA-256 hashing for integrity demonstration</li>
+    </ul>
+    <h3>Real Applications</h3>
+    <ul>
+      <li>Cryptocurrency wallets and transactions</li>
+      <li>Decentralized finance (DeFi)</li>
+      <li>Secure online credentials - academic, government, enterprise</li>
+      <li>Smart contracts for automated agreements</li>
+      <li>Supply chain traceability</li>
+    </ul>
+    <h3>Learn More</h3>
+    <ul>
+      <li>Explore code in <code>app.js</code> for interactive demonstration</li>
+      <li>See how blocks are generated, hashed, and chained</li>
+      <li>Try adding new blocks in the visualizer</li>
+      <li>Check popular blockchain platforms: Bitcoin, Ethereum, Hyperledger, etc.[web:3]</li>
+    </ul>
+    <div class="info-cta">
+      <a href="index.html">Explore Blockchain Visualizer</a>
+    </div>
+  </section>
+  <footer>
+    <p>Blockchain Demo | Learn & Build Secure Ledgers | 2025</p>
+  </footer>
+</body>
+</html>
